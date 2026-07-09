@@ -1,27 +1,34 @@
 // UI Material
-import { ThemeProvider } from "@mui/material/styles";
+
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
+// i18next
+import { useTranslation } from "react-i18next";
+
 // My imports
-import { getCustomTheme } from "./theme/theme";
 
 import "./App.css";
 import ThemeToggle from "./components/ThemeToggle";
+import LanguageToggle from "./components/LanguageToggle";
 
 function App() {
-  localStorage.setItem("mode", "light");
-  const theme = getCustomTheme(localStorage.getItem("mode") ?? "light");
+  // Test i18next
+  const { t } = useTranslation();
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <div id="App" className="App" dir="rtl">
-          <Typography variant="h1">Test Materia ui text</Typography>
-          <Typography variant="h1">اختبار للعربي </Typography>
-          <Button variant="contained">click</Button>
-          <ThemeToggle />
-        </div>
-      </ThemeProvider>
+      <div id="App" className="App">
+        <Typography variant="h1">Test Materia ui text</Typography>
+        <Typography variant="h1">اختبارللخط العربي </Typography>
+        <br />
+        <Button variant="contained">click</Button>
+        <br />
+        <Typography variant="p">Test languages : {t("hello world")}</Typography>
+        <br />
+        <LanguageToggle />
+        <ThemeToggle />
+        <br />
+      </div>
     </>
   );
 }

@@ -38,8 +38,9 @@ const darkPalette = {
   },
 };
 
-export const getCustomTheme = (mode = "dark") => {
+export const getCustomTheme = (mode = "dark", direction) => {
   return createTheme({
+    direction: direction,
     palette: mode === "dark" ? darkPalette : lightPalette,
     shape: {
       borderRadius: 8,

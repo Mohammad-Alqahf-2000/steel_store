@@ -2,12 +2,22 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
+// i18next
+import "./i18n/config.js";
+
+// theme
 import { ThemeContextProvider } from "./contexts/ThemeContext";
+
+// redux
+import { store } from "./store/store.js";
+import { Provider } from "react-redux";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ThemeContextProvider>
-      <App />
-    </ThemeContextProvider>
+    <Provider store={store}>
+      <ThemeContextProvider>
+        <App />
+      </ThemeContextProvider>
+    </Provider>
   </StrictMode>,
 );
